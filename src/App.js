@@ -3,40 +3,34 @@ import './App.css';
 import './reset.css';
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
+import Login from './Login';
 import 'normalize.css';
 import * as localStore from './localStorage';
-import AV from 'leancloud-storage'
-var APP_ID = 'SEtpSKXs0JWuskWk8dTULIXA-gzGzoHsz';
-var APP_KEY = 'XtDds8gsEDfG7NzWe2Rvth5x';
 
-AV.init({
-  appId: APP_ID,
-  appKey: APP_KEY
-});
+
+
 
 let id=0
 function idMaker(){
   id+=1
   return id
 }
-
-var TestObject = AV.Object.extend('TestObject')
-var testObject = new TestObject()
-testObject.save({
-  words: 'Hello World!'
-}).then(function(object) {
-  alert('LeanCloud Rocks!')
-})
-
-
-
+// 测试 
+// var TestObject = AV.Object.extend('TestObject')
+// var testObject = new TestObject()
+// testObject.save({
+//   words: 'Hello World!'
+// }).then(function(object) {
+//   alert('LeanCloud Rocks!')
+// })
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state ={
       newTodo:'',
-      todoList:localStore.load('todoList') || []
+      // todoList:localStore.load('todoList') || []
+      todoList:[]
     }
   }
   addTodo(e){
@@ -72,7 +66,7 @@ class App extends Component {
     
   }
   componentDidUpdate(){
-    localStore.save('todoList',this.state.todoList)
+    // localStore.save('todoList',this.state.todoList)
   }
   render() {
     let todos=this.state.todoList.filter((item)=>!item.deleted).map((item,index) =>{
@@ -93,6 +87,7 @@ class App extends Component {
           <ol className='todoList'>
             {todos}
           </ol>
+          <Login />
       </div>
     );
   }
