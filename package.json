@@ -2,7 +2,7 @@
   "name": "react-03",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://haofangzhou.github.io/react-03/build",
+  "homepage": "https://haofangzhou.github.io/repro/build",
   "dependencies": {
     "leancloud-storage": "^3.1.0",
     "normalize.css": "^7.0.0",
